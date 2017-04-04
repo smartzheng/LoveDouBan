@@ -3,14 +3,12 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
-
     defaultConfig {
-        applicationId "com.zs.dagger2demo"
-        minSdkVersion 14
+        applicationId "com.zs.douban"
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
     }
     buildTypes {
         release {
@@ -18,15 +16,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.roughike:bottom-bar:2.2.0'
+    compile 'com.android.support:design:25.0.0'
     compile 'com.jakewharton:butterknife:5.1.1'
-    compile 'com.google.dagger:dagger:2.4'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
-
+    // 添加Retrofit依赖
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    // 使用Gson进行数据解析
+    compile 'com.google.code.gson:gson:2.2.4'
+    // 将Retorfit与Gson关联
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 }

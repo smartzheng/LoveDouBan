@@ -1,0 +1,14 @@
+<tabs>
+    <tab
+        id="@+id/tab_movie"
+        icon="@drawable/ic_movie"
+        title="电影" />
+    <tab
+        id="@+id/tab_read"
+        icon="@drawable/ic_read"
+        title="书籍" />
+    <tab
+        id="@+id/tab_music"
+        icon="@drawable/ic_music"
+        title="音乐" />
+</tabs>
