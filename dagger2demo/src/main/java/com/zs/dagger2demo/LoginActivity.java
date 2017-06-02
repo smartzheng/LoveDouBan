@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         //利用dagger2生成的类来完成注入
         LoginComponent component = DaggerLoginComponent//
                 .builder()//
-                .loginModel(new LoginModule())//
+                .loginModule(new LoginModule())//
                 .build();
         component.inject(this);
     }

@@ -1,17 +1,19 @@
-package com.zs.douban.ui.fragment;
+package com.zs.douban.ui.fragment.movie;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
 import com.zs.douban.ui.adapter.HomeTabsAdapter;
+import com.zs.douban.ui.fragment.movie.coming.ComingFragment;
+import com.zs.douban.ui.fragment.movie.hot.HotFragment;
+import com.zs.douban.ui.fragment.movie.top.TopFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,8 +27,6 @@ public class MovieFragment extends Fragment {
     TabLayout mTabLayout;
     @InjectView(R.id.viewPager)
     ViewPager mViewPager;
-    @InjectView(R.id.swipeLayout)
-    SwipeRefreshLayout mSwipeLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

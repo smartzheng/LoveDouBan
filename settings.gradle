@@ -1,1 +1,2 @@
 include ':douban', ':dagger2demo'
+include ':library'

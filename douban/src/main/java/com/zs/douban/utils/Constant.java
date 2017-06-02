@@ -6,7 +6,7 @@ package com.zs.douban.utils;
 
 public interface Constant {
     String BASEURL="https://api.douban.com/v2/";
-    String MOVIE="";
+    String MOVIE_HOT="movie/in_theaters";
     String READ="";
     String MUSIC="";
 }

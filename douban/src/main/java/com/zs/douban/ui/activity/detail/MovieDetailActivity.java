@@ -1,4 +1,6 @@
-package com.zs.douban.ui.activity;
+package com.zs.douban.ui.activity.detail;
+
+import com.zs.douban.ui.base.BaseActivity;
 
 /**
  * Created by smartzheng on 2017/4/3.

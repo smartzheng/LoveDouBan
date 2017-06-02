@@ -1,4 +1,4 @@
-package com.zs.douban.ui.activity;
+package com.zs.douban.ui.activity.home;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -19,9 +19,9 @@ import android.widget.FrameLayout;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.zs.douban.R;
-import com.zs.douban.ui.fragment.MovieFragment;
-import com.zs.douban.ui.fragment.MusicFragment;
-import com.zs.douban.ui.fragment.ReadFragment;
+import com.zs.douban.ui.fragment.movie.MovieFragment;
+import com.zs.douban.ui.fragment.music.MusicFragment;
+import com.zs.douban.ui.fragment.book.ReadFragment;
 
 import java.util.ArrayList;
 
