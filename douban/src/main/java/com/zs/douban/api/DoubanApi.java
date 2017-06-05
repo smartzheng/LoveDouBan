@@ -1,13 +1,13 @@
 package com.zs.douban.api;
 
-import com.zs.douban.injector.module.HotModule;
+import com.zs.douban.model.HotModel;
 import com.zs.douban.utils.Constant;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
+import rx.Observable;
 
 /**
  * Created by smartzheng on 2017/4/4.
@@ -15,5 +15,6 @@ import retrofit2.http.QueryMap;
 
 public interface DoubanApi {
     @GET(Constant.MOVIE_HOT)
-    Observable<HotModule> hot(@QueryMap Map<String, String> param);
+    Observable<HotModel> hot(@QueryMap Map<String, String> param);
+
 }

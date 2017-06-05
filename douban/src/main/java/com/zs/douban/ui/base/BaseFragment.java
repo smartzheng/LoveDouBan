@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
  * Created by smartzheng on 2017/4/3.
  */
 
-public abstract class BaseFragment extends android.support.v4.app.Fragment implements IView{
+public abstract class BaseFragment<T> extends android.support.v4.app.Fragment implements IView<T>{
     protected Context mContext;
     //缓存Fragment view
     private View mRootView;

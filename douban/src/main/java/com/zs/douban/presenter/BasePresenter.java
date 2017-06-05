@@ -5,15 +5,13 @@ import com.zs.douban.utils.Constant;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by smartzheng on 2017/4/3.
@@ -27,7 +25,7 @@ public abstract class BasePresenter<T> {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constant.BASEURL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
             sApi = retrofit.create(DoubanApi.class);
         }
@@ -44,28 +42,23 @@ public abstract class BasePresenter<T> {
         getObservable(param)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<T>() {
+                .subscribe(new Subscriber<T>() {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d) {
+                    public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onNext(@NonNull T module) {
-                        success(module);
+                    public void onError(Throwable e) {
+                        failed("连接失败");
                     }
 
                     @Override
-                    public void onError(@NonNull Throwable e) {
-                        failed("访问失败");
-                    }
-
-                    @Override
-                    public void onComplete() {
-
+                    public void onNext(T response) {
+                        success(response);
                     }
                 });
     }
-    protected  abstract void success(T module);
+    protected  abstract void success(T model);
     protected  abstract void failed(String msg);
 }

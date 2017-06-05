@@ -1,6 +1,6 @@
 package com.zs.douban.ui.fragment.movie.hot;
 
-import com.zs.douban.injector.module.HotModule;
+import com.zs.douban.model.HotModel;
 import com.zs.douban.presenter.BasePresenter;
 import com.zs.douban.ui.base.IView;
 
@@ -8,13 +8,13 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
+import rx.Observable;
 
 /**
  * Created by smartzheng on 2017/6/2.
  */
 
-public class HotPresenter extends BasePresenter<HotModule> {
+public class HotPresenter extends BasePresenter<HotModel> {
     private IView mIView;
 
     @Inject
@@ -24,14 +24,14 @@ public class HotPresenter extends BasePresenter<HotModule> {
 
 
     @Override
-    public Observable<HotModule> getObservable(Map<String,String> param) {
+    public Observable<HotModel> getObservable(Map<String,String> param) {
         return sApi.hot(param);
     }
 
 
     @Override
-    protected void success(HotModule module) {
-        mIView.onSuccess(module);
+    protected void success(HotModel model) {
+        mIView.onSuccess(model);
     }
 
     @Override

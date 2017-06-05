@@ -1,4 +1,4 @@
-package com.zs.douban.presenter;
+package com.zs.douban.ui.activity.home;
 
 import com.zs.douban.api.DoubanApi;
 
