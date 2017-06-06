@@ -1,12 +1,13 @@
-package com.zs.douban.ui.base;
+package com.zs.douban.module.base;
 
-import android.app.Activity;
+import com.zhy.autolayout.AutoLayoutActivity;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
-public class BaseActivity extends Activity implements IView {
+public class BaseActivity extends AutoLayoutActivity implements IView {
     @Override
     public void loadData() {
 

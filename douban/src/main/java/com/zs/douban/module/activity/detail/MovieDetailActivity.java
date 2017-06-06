@@ -1,9 +1,10 @@
-package com.zs.douban.ui.activity.detail;
+package com.zs.douban.module.activity.detail;
 
-import com.zs.douban.ui.base.BaseActivity;
+import com.zs.douban.module.base.BaseActivity;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
 public class MovieDetailActivity extends BaseActivity {

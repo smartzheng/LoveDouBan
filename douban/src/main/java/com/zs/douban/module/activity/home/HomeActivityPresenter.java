@@ -1,6 +1,4 @@
-package com.zs.douban.ui.activity.home;
-
-import com.zs.douban.api.DoubanApi;
+package com.zs.douban.module.activity.home;
 
 /**
  * Created by smartzheng on 2017/4/4.

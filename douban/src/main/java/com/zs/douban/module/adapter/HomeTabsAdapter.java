@@ -1,4 +1,4 @@
-package com.zs.douban.ui.adapter;
+package com.zs.douban.module.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
 public class HomeTabsAdapter extends FragmentPagerAdapter {

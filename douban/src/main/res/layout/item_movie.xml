@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20px">
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="192px"
+                android:layout_height="310px"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_movie"/>
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TitleStyle"
+                android:layout_marginLeft="80px"
+                android:layout_toRightOf="@+id/iv_image"
+                android:text="东邪西毒"
+            />
+
+            <TextView
+                android:id="@+id/tv_director"
+                style="@style/ContentStyle"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginLeft="80px"
+                android:layout_marginTop="30px"
+                android:layout_toRightOf="@+id/iv_image"
+                android:text="导演:王家卫"
+            />
+            <TextView
+                android:id="@+id/tv_cast"
+                style="@style/ContentStyle"
+                android:layout_below="@+id/tv_director"
+                android:layout_marginLeft="80px"
+                android:layout_marginTop="30px"
+                android:layout_toRightOf="@+id/iv_image"
+                android:text="主演:张国荣/梁家辉/林青霞/梁朝伟"
+            />
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/ContentStyle"
+                android:layout_below="@+id/tv_cast"
+                android:layout_marginLeft="80px"
+                android:layout_marginTop="30px"
+                android:layout_toRightOf="@+id/iv_image"
+                android:text="上映时间:1996"
+            />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

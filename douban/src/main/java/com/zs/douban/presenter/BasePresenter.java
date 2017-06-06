@@ -1,6 +1,7 @@
 package com.zs.douban.presenter;
 
 import com.zs.douban.api.DoubanApi;
+import com.zs.douban.module.base.IView;
 import com.zs.douban.utils.Constant;
 
 import java.util.Map;
@@ -15,10 +16,12 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
 public abstract class BasePresenter<T> {
-    public static DoubanApi sApi;
+    protected IView<T> mIView;
+    protected static DoubanApi sApi;
     protected BasePresenter() {
         //初始化retrofit
         if(sApi==null) {
@@ -34,15 +37,18 @@ public abstract class BasePresenter<T> {
 
     /**
      * 获取每个页面对应的Observable
-     * @param param
-     * @return
      */
-    public abstract Observable<T> getObservable(Map<String, String> param);
-    public void getData(Map<String, String> param){
+    public abstract Observable<T> getObservable(Map<String, Object> param);
+    public void getData(Map<String, Object> param){
         getObservable(param)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<T>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                    }
+
                     @Override
                     public void onCompleted() {
 

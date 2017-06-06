@@ -1,7 +1,7 @@
 package com.zs.douban.injector.module;
 
-import com.zs.douban.ui.fragment.movie.hot.HotFragment;
-import com.zs.douban.ui.fragment.movie.hot.HotPresenter;
+import com.zs.douban.module.fragment.movie.hot.HotFragment;
+import com.zs.douban.module.fragment.movie.hot.HotPresenter;
 
 import javax.inject.Singleton;
 
@@ -10,6 +10,7 @@ import dagger.Provides;
 
 /**
  * Created by smartzheng on 2017/6/2.
+ *
  */
 @Module
 public class HotModule {

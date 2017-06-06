@@ -1,22 +1,30 @@
-package com.zs.douban.ui.base;
+package com.zs.douban.module.base;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zs.douban.R;
+import com.zs.douban.utils.SwipeRefreshHelper;
+
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Created by smartzheng on 2017/4/3.
  */
 
-public abstract class BaseFragment<T> extends android.support.v4.app.Fragment implements IView<T>{
+public abstract class BaseFragment<T> extends android.support.v4.app.Fragment implements IView<T> {
+    @InjectView(R.id.srl_root)
+    protected SwipeRefreshLayout mSrlRoot;
     protected Context mContext;
     //缓存Fragment view
     private View mRootView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +39,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
             ButterKnife.inject(this, mRootView);
             initInjector();
             initViews();
-            //initSwipeRefresh();
+            initSwipeRefresh();
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
         if (parent != null) {
@@ -47,8 +55,24 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
     }
 
     /**
+     * 初始化下拉刷新
+     */
+    private void initSwipeRefresh() {
+        if (mSrlRoot != null) {
+            SwipeRefreshHelper.init(mSrlRoot, new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    //这个写法不好
+                    //updateViews(true);
+                }
+            });
+        }
+    }
+
+    /**
      * 绑定布局文件
-     * @return  布局文件ID
+     *
+     * @return 布局文件ID
      */
     protected abstract int attachLayoutRes();
 
@@ -64,7 +88,8 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
 
     /**
      * 更新视图控件
-     * @param isRefresh 新增参数，用来判断是否为下拉刷新调用，下拉刷新的时候不应该再显示加载界面和异常界面
+     *
+     * @param isRefresh 刷新或者加载更多
      */
     protected abstract void updateViews(boolean isRefresh);
 }

@@ -1,4 +1,4 @@
-package com.zs.douban.ui.activity.home;
+package com.zs.douban.module.activity.home;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

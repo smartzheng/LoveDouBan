@@ -11,10 +11,11 @@ import rx.Observable;
 
 /**
  * Created by smartzheng on 2017/4/4.
+ *
  */
 
 public interface DoubanApi {
     @GET(Constant.MOVIE_HOT)
-    Observable<HotModel> hot(@QueryMap Map<String, String> param);
+    Observable<HotModel> hot(@QueryMap Map<String, Object> param);
 
 }

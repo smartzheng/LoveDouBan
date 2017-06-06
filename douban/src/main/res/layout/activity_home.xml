@@ -6,7 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.home.HomeActivity">
+    tools:context=".module.activity.home.HomeActivity">
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
     <!--CoordinatorLayout协调布局 有这样几个功能:(1)让浮动操作按钮上下滑动，为Snackbar留出空间 (2)拓展或者缩小toolbar

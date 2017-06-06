@@ -1,4 +1,4 @@
-package com.zs.douban.ui.fragment.movie;
+package com.zs.douban.module.fragment.movie;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,16 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
-import com.zs.douban.ui.adapter.HomeTabsAdapter;
-import com.zs.douban.ui.fragment.movie.coming.ComingFragment;
-import com.zs.douban.ui.fragment.movie.hot.HotFragment;
-import com.zs.douban.ui.fragment.movie.top.TopFragment;
+import com.zs.douban.module.adapter.HomeTabsAdapter;
+import com.zs.douban.module.fragment.movie.coming.ComingFragment;
+import com.zs.douban.module.fragment.movie.hot.HotFragment;
+import com.zs.douban.module.fragment.movie.top.TopFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
 public class MovieFragment extends Fragment {

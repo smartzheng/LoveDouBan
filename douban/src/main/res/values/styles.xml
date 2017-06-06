@@ -16,4 +16,16 @@
         <item name="colorAccent">#FF4081</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
+    <style name="TitleStyle">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">40px</item>
+    </style>
+    <style name="ContentStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">30px</item>
+    </style>
 </resources>

@@ -1,4 +1,4 @@
-package com.zs.douban.ui.fragment.book;
+package com.zs.douban.module.fragment.book;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
-import com.zs.douban.ui.base.BaseFragment;
+import com.zs.douban.module.base.BaseFragment;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
+ *
  */
 
 public class ReadFragment extends BaseFragment {
