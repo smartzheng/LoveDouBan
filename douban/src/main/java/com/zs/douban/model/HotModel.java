@@ -9,10 +9,10 @@ import java.util.List;
  */
 
 public class HotModel {
-    private int count;
+    private int count;//请求的个数
     private int start;
     private String title;
-    private int total;
+    private int total;//总数
     private List<SubjectsBean> subjects;
 
     public int getCount() {

@@ -43,7 +43,7 @@ public class ComingFragment extends BaseFragment {
     }
 
     @Override
-    public void loadData() {
+    public void initData() {
 
     }
 

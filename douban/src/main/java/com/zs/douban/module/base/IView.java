@@ -7,7 +7,7 @@ package com.zs.douban.module.base;
  */
 
 public interface IView<T> {
-    void loadData();
+    void initData();
     void onFailed();
     void onSuccess(T data);
 }

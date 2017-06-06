@@ -44,7 +44,7 @@ public class ReadFragment extends BaseFragment {
     }
 
     @Override
-    public void loadData() {
+    public void initData() {
 
     }
 

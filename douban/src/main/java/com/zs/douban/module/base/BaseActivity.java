@@ -9,7 +9,7 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 public class BaseActivity extends AutoLayoutActivity implements IView {
     @Override
-    public void loadData() {
+    public void initData() {
 
     }
 

@@ -43,7 +43,7 @@ public class MusicFragment extends BaseFragment {
     }
 
     @Override
-    public void loadData() {
+    public void initData() {
 
     }
 

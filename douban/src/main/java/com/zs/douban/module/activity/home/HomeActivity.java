@@ -101,7 +101,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * @param item
+     * @params item
      * @return
      */
     @Override
@@ -134,7 +134,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * 初始化主题菜单
      *
-     * @param menu
+     * @params menu
      * @return
      */
     @Override
@@ -159,7 +159,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * 点击bottombar切换fragment
-     * @param index
+     * @params index
      */
     private void changeFgm(int index) {
         Fragment fragment = fgmList.get(index);

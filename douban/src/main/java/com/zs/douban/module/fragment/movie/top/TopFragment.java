@@ -43,7 +43,7 @@ public class TopFragment extends BaseFragment {
     }
 
     @Override
-    public void loadData() {
+    public void initData() {
 
     }
 

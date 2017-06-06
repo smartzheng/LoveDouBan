@@ -4,6 +4,7 @@ import com.zs.douban.model.HotModel;
 import com.zs.douban.module.base.IView;
 import com.zs.douban.presenter.BasePresenter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import rx.Observable;
@@ -14,8 +15,11 @@ import rx.Observable;
  */
 
 public class HotPresenter extends BasePresenter<HotModel> {
+    private HashMap<String, Object> param;
+    private int start = 0;
     public HotPresenter(IView<HotModel> view) {
         mIView = view;
+        param = new HashMap<>();
     }
 
     @Override
@@ -32,6 +36,19 @@ public class HotPresenter extends BasePresenter<HotModel> {
     @Override
     protected void failed(String msg) {
 
+    }
+
+    @Override
+    protected Map<String, Object> moreParam() {
+        start = 0;
+        param.put("start", start);
+        return param;
+    }
+
+    @Override
+    protected Map<String, Object> initParam() {
+        param.put("start", ++start);
+        return param;
     }
 
 }

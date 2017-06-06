@@ -67,4 +67,14 @@ public abstract class BasePresenter<T> {
     }
     protected  abstract void success(T model);
     protected  abstract void failed(String msg);
+    public void initData(){
+        getData(initParam());
+    }
+    public void getMoreData(){
+        getData(moreParam());
+    }
+
+    protected abstract Map<String,Object> moreParam();
+
+    protected abstract Map<String,Object> initParam();
 }

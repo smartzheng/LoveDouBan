@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
+import com.zs.douban.module.adapter.BaseListAdapter;
 import com.zs.douban.utils.SwipeRefreshHelper;
 
 import butterknife.ButterKnife;
@@ -24,7 +25,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
     protected Context mContext;
     //缓存Fragment view
     private View mRootView;
-
+    protected BaseListAdapter mAdapter;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        loadData();
+        initData();
     }
 
     /**
@@ -63,7 +64,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
                 @Override
                 public void onRefresh() {
                     //这个写法不好
-                    //updateViews(true);
+                    updateViews(true);
                 }
             });
         }
@@ -92,4 +93,8 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
      * @param isRefresh 刷新或者加载更多
      */
     protected abstract void updateViews(boolean isRefresh);
+    protected void finishLoad(){
+        SwipeRefreshHelper.controlRefresh(mSrlRoot, false);
+        mAdapter.loadMoreComplete();
+    }
 }

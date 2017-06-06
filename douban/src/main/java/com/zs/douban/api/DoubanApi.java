@@ -16,6 +16,6 @@ import rx.Observable;
 
 public interface DoubanApi {
     @GET(Constant.MOVIE_HOT)
-    Observable<HotModel> hot(@QueryMap Map<String, Object> param);
+    Observable<HotModel> hot(@QueryMap Map<String, Object> params);
 
 }
