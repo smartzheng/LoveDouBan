@@ -1,7 +1,6 @@
-package com.zs.douban.presenter;
+package com.zs.douban.module.base;
 
 import com.zs.douban.api.DoubanApi;
-import com.zs.douban.module.base.IView;
 import com.zs.douban.utils.Constant;
 
 import java.util.Map;

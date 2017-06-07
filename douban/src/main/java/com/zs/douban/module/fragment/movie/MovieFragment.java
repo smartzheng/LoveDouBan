@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 
 import com.zs.douban.R;
 import com.zs.douban.module.adapter.HomeTabsAdapter;
-import com.zs.douban.module.fragment.movie.coming.ComingFragment;
-import com.zs.douban.module.fragment.movie.hot.HotFragment;
-import com.zs.douban.module.fragment.movie.top.TopFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -33,7 +30,6 @@ public class MovieFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie,null);
         ButterKnife.inject(this, rootView);
-
         return rootView;
     }
 
@@ -46,17 +42,20 @@ public class MovieFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.reset(this);
     }
     private void setupViewPager(ViewPager viewPager) {
         if (getActivity() != null) {
             //创建了一个viewpager的数据适配器
-            HomeTabsAdapter adapter = new HomeTabsAdapter(getActivity().getSupportFragmentManager());
+            HomeTabsAdapter adapter = new HomeTabsAdapter(getChildFragmentManager());
             //Fragment作为viewpager 要展示的内容
-            adapter.addFragment(new HotFragment(), "正在热映");
-            adapter.addFragment(new ComingFragment(), "即将上演");
-            adapter.addFragment(new TopFragment(), "Top250");
+            MovieListFragment hotFragment =  MovieListFragment.getInstance(0);
+            MovieListFragment comingFragment = MovieListFragment.getInstance(1);
+            MovieListFragment topFragment = MovieListFragment.getInstance(2);
+            adapter.addFragment(hotFragment, "正在热映");
+            adapter.addFragment(comingFragment, "即将上映");
+            adapter.addFragment(topFragment, "Top250");
             //给viewpager设置数据适配器  viewpager的内容就显示出来 了
+            viewPager.setOffscreenPageLimit(3);
             viewPager.setAdapter(adapter);
             mTabLayout.setupWithViewPager(viewPager);
         }

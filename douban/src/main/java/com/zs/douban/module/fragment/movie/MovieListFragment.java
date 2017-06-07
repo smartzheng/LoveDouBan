@@ -1,15 +1,18 @@
-package com.zs.douban.module.fragment.movie.hot;
+package com.zs.douban.module.fragment.movie;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zs.douban.R;
-import com.zs.douban.injector.component.DaggerHotComponent;
-import com.zs.douban.injector.module.HotModule;
-import com.zs.douban.model.HotModel;
-import com.zs.douban.module.adapter.hotAdapter;
+import com.zs.douban.injector.component.DaggerMovieListComponent;
+import com.zs.douban.injector.module.MovieListModule;
+import com.zs.douban.model.MovieModel;
+import com.zs.douban.module.adapter.MovieListAdapter;
 import com.zs.douban.module.base.BaseFragment;
+import com.zs.douban.module.presenter.MovieListPresenter;
+import com.zs.douban.utils.Constant;
 import com.zs.douban.utils.SwipeRefreshHelper;
 
 import javax.inject.Inject;
@@ -18,25 +21,38 @@ import butterknife.InjectView;
 
 /**
  * Created by smartzheng on 2017/4/3.
- *
  */
 
-public class HotFragment extends BaseFragment<HotModel> implements BaseQuickAdapter.RequestLoadMoreListener {
+public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQuickAdapter.RequestLoadMoreListener {
     @Inject
-    HotPresenter mPresenter;
+    MovieListPresenter mPresenter;
     @InjectView(R.id.rv_hot)
     RecyclerView mRvHot;
     private int total = 0;
     private boolean isRefresh = true;
+    private int currentPage;
+
     @Override
     protected int attachLayoutRes() {
-        return R.layout.fragment_hot;
+        return R.layout.fragment_movie_list;
+    }
+
+    public MovieListFragment() {
+
+    }
+
+    public static MovieListFragment getInstance(int currentPage) {
+        MovieListFragment fragment = new MovieListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constant.PAGE_INDEX, currentPage);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     protected void initInjector() {
-        DaggerHotComponent.builder()
-                .hotModule(new HotModule(this))
+        DaggerMovieListComponent.builder()
+                .movieListModule(new MovieListModule(this,currentPage))
                 .build()
                 .inject(this);
     }
@@ -44,7 +60,7 @@ public class HotFragment extends BaseFragment<HotModel> implements BaseQuickAdap
     @Override
     protected void initViews() {
         mRvHot.setLayoutManager(new LinearLayoutManager(mContext));
-        mAdapter = new hotAdapter();
+        mAdapter = new MovieListAdapter();
         mAdapter.setOnLoadMoreListener(this, mRvHot);
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         mRvHot.setAdapter(mAdapter);
@@ -64,6 +80,11 @@ public class HotFragment extends BaseFragment<HotModel> implements BaseQuickAdap
         }
     }
 
+    @Override
+    protected void getArgs() {
+        currentPage = getArguments().getInt(Constant.PAGE_INDEX);
+    }
+
     /**
      * 初始化数据
      */
@@ -79,7 +100,7 @@ public class HotFragment extends BaseFragment<HotModel> implements BaseQuickAdap
     }
 
     @Override
-    public void onSuccess(HotModel data) {
+    public void onSuccess(MovieModel data) {
         finishLoad();
         total = data.getTotal();
         if (isRefresh) {

@@ -1,4 +1,4 @@
-package com.zs.douban.module.adapter;
+package com.zs.douban.module.base;
 
 import android.support.annotation.LayoutRes;
 

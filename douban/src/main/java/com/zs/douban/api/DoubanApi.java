@@ -1,6 +1,6 @@
 package com.zs.douban.api;
 
-import com.zs.douban.model.HotModel;
+import com.zs.douban.model.MovieModel;
 import com.zs.douban.utils.Constant;
 
 import java.util.Map;
@@ -16,6 +16,12 @@ import rx.Observable;
 
 public interface DoubanApi {
     @GET(Constant.MOVIE_HOT)
-    Observable<HotModel> hot(@QueryMap Map<String, Object> params);
+    Observable<MovieModel> hot(@QueryMap Map<String, Object> params);
+
+    @GET(Constant.MOVIE_COMING)
+    Observable<MovieModel> coming(@QueryMap Map<String, Object> params);
+
+    @GET(Constant.MOVIE_TOP)
+    Observable<MovieModel> top(@QueryMap Map<String, Object> params);
 
 }

@@ -5,7 +5,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zs.douban.R;
-import com.zs.douban.model.HotModel.SubjectsBean;
+import com.zs.douban.model.MovieModel.SubjectsBean;
+import com.zs.douban.module.base.BaseListAdapter;
 
 import java.util.List;
 
@@ -13,8 +14,8 @@ import java.util.List;
  * Created by smartzheng on 2017/6/5.
  */
 
-public class hotAdapter extends BaseListAdapter<SubjectsBean> {
-    public hotAdapter() {
+public class MovieListAdapter extends BaseListAdapter<SubjectsBean> {
+    public MovieListAdapter() {
         super(R.layout.item_movie);
     }
 

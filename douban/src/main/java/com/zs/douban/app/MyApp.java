@@ -1,4 +1,4 @@
-package com.zs.douban;
+package com.zs.douban.app;
 
 import android.app.Application;
 

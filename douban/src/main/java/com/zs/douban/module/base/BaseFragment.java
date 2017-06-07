@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
-import com.zs.douban.module.adapter.BaseListAdapter;
 import com.zs.douban.utils.SwipeRefreshHelper;
 
 import butterknife.ButterKnife;
@@ -17,6 +16,7 @@ import butterknife.InjectView;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
 public abstract class BaseFragment<T> extends android.support.v4.app.Fragment implements IView<T> {
@@ -39,6 +39,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
         if (mRootView == null) {
             mRootView = inflater.inflate(attachLayoutRes(), null);
             ButterKnife.inject(this, mRootView);
+            getArgs();
             initInjector();
             initViews();
             initSwipeRefresh();
@@ -48,6 +49,13 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
             parent.removeView(mRootView);
         }
         return mRootView;
+    }
+
+    /**
+     * 当生产fragment时初始化参数，不强制重写
+     */
+    protected void getArgs() {
+
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 
-public class HotModel {
+public class MovieModel {
     private int count;//请求的个数
     private int start;
     private String title;

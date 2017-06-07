@@ -1,4 +1,4 @@
-package com.zs.douban.view;
+package com.zs.douban.customview;
 
 
 import com.chad.library.adapter.base.loadmore.LoadMoreView;

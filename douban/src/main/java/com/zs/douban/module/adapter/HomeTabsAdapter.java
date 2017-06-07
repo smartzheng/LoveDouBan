@@ -13,11 +13,13 @@ import java.util.List;
  */
 
 public class HomeTabsAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragments = new ArrayList<>();
-    private final List<String> mFragmentTitles = new ArrayList<>();
+    private final List<Fragment> mFragments ;
+    private final List<String> mFragmentTitles ;
 
     public HomeTabsAdapter(FragmentManager fm) {
         super(fm);
+        mFragments = new ArrayList<>();
+        mFragmentTitles = new ArrayList<>();
     }
 
     public void addFragment(Fragment fragment, String title) {

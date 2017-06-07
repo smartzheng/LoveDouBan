@@ -7,6 +7,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
     BottomBar mBottomBar;
     private int selectedTheme;
     private ArrayList<Fragment> fgmList;
+    private Fragment mCurrentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,13 +98,13 @@ public class HomeActivity extends AppCompatActivity {
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-            actionBar.setDisplayHomeAsUpEnabled(true);//TODO 含义
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
     /**
-     * @params item
      * @return
+     * @params item
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -134,8 +136,8 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * 初始化主题菜单
      *
-     * @params menu
      * @return
+     * @params menu
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,13 +161,21 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * 点击bottombar切换fragment
+     *
      * @params index
      */
     private void changeFgm(int index) {
         Fragment fragment = fgmList.get(index);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (mCurrentFragment == null) {
+            transaction.add(R.id.container, fragment).commit();
+        } else if (mCurrentFragment != fragment) {
+            if (!fragment.isAdded()) { // 先判断是否被add过
+                transaction.hide(mCurrentFragment).add(R.id.container, fragment).commit(); // 隐藏当前的fragment，add下一个到Activity中
+            } else {
+                transaction.hide(mCurrentFragment).show(fragment).commit(); // 隐藏当前的fragment，显示下一个
+            }
+        }
+        mCurrentFragment = fragment;
     }
 }
