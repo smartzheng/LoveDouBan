@@ -39,15 +39,15 @@ public class ReadPresenter extends BasePresenter<ReadModel> {
 
     @Override
     protected Map<String, Object> moreParam() {
-        mStart = 0;
-        param.put("start", ++mStart);
+        mStart+=20;
+        param.put("start", mStart);
         return param;
     }
 
     @Override
     protected Map<String, Object> initParam() {
+        mStart = 0;
         param.put("start", mStart);
-        param.put("count",100);
         return param;
     }
 }

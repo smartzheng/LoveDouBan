@@ -51,14 +51,16 @@ public class MovieListPresenter extends BasePresenter<MovieModel> {
 
     @Override
     protected Map<String, Object> moreParam() {
-        mStart = 0;
+        mStart+=20;
         param.put("start", mStart);
         return param;
     }
 
     @Override
     protected Map<String, Object> initParam() {
-        param.put("start", ++mStart);
+        mStart = 0;
+        param.put("start", mStart);
+        param.put("count", 20);
         return param;
     }
 }
