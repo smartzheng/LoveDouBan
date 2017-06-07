@@ -26,6 +26,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
     //缓存Fragment view
     private View mRootView;
     protected BaseListAdapter mAdapter;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +94,10 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
      * @param isRefresh 刷新或者加载更多
      */
     protected abstract void updateViews(boolean isRefresh);
-    protected void finishLoad(){
+
+    protected void finishLoad() {
         SwipeRefreshHelper.controlRefresh(mSrlRoot, false);
-        mAdapter.loadMoreComplete();
+        if (mAdapter.isLoading())
+            mAdapter.loadMoreComplete();
     }
 }

@@ -27,15 +27,27 @@ public class hotAdapter extends BaseListAdapter<SubjectsBean> {
         Glide.with(mContext).load(item.getImages().getLarge()).into((ImageView) helper.getView(R.id.iv_image));
     }
 
-
+    /**
+     * 连接导演
+     * @param list
+     * @return
+     */
     private String directors2StringBySlash(List<SubjectsBean.DirectorsBean> list) {
         String s = "";
         for (SubjectsBean.DirectorsBean item : list) {
             s += item.getName() + "/";
         }
+        if (s.equals("")) {
+            return "暂无";
+        }
         return "导演:" + s.substring(0, s.length() - 1);
     }
 
+    /**
+     * 连接演员
+     * @param list
+     * @return
+     */
     private String casts2StringBySlash(List<SubjectsBean.CastsBean> list) {
         String s = "";
         for (SubjectsBean.CastsBean item : list) {
@@ -47,12 +59,20 @@ public class hotAdapter extends BaseListAdapter<SubjectsBean> {
         return "演员:" + s.substring(0, s.length() - 1);
     }
 
+    /**
+     * 加载更多
+     * @param data
+     */
     @Override
     public void addMoreData(List<SubjectsBean> data) {
         getData().addAll(data);
         notifyItemInserted(getData().size());
     }
 
+    /**
+     * 首次加载
+     * @param data
+     */
     @Override
     public void initData(List<SubjectsBean> data) {
         setNewData(data);
