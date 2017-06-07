@@ -20,6 +20,8 @@ import butterknife.InjectView;
  */
 
 public abstract class BaseFragment<T> extends android.support.v4.app.Fragment implements IView<T> {
+    protected boolean isRefresh = true;
+    protected int total;
     @InjectView(R.id.srl_root)
     protected SwipeRefreshLayout mSrlRoot;
     protected Context mContext;

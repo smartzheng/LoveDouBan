@@ -26,10 +26,10 @@ import butterknife.InjectView;
 public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQuickAdapter.RequestLoadMoreListener {
     @Inject
     MovieListPresenter mPresenter;
-    @InjectView(R.id.rv_hot)
-    RecyclerView mRvHot;
+    @InjectView(R.id.rv_movie)
+    RecyclerView mRecyclerView;
     private int total = 0;
-    private boolean isRefresh = true;
+
     private int currentPage;
 
     @Override
@@ -59,11 +59,11 @@ public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQ
 
     @Override
     protected void initViews() {
-        mRvHot.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mAdapter = new MovieListAdapter();
-        mAdapter.setOnLoadMoreListener(this, mRvHot);
+        mAdapter.setOnLoadMoreListener(this, mRecyclerView);
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
-        mRvHot.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     /**

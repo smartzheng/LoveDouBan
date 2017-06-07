@@ -23,7 +23,7 @@ public class MovieListModule {
     }
     @Provides
     @Singleton
-    MovieListPresenter provideHotPresenter(){
+    MovieListPresenter provideMovieListPresenter(){
         return new MovieListPresenter(mIView,pageIndex);
     }
 }

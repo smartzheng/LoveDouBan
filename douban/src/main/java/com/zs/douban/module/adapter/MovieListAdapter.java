@@ -24,7 +24,7 @@ public class MovieListAdapter extends BaseListAdapter<SubjectsBean> {
         helper.setText(R.id.tv_title, item.getTitle())
                 .setText(R.id.tv_director, directors2StringBySlash(item.getDirectors()))
                 .setText(R.id.tv_cast, casts2StringBySlash(item.getCasts()))
-                .setText(R.id.tv_time, "上映时间:" + item.getYear());
+                .setText(R.id.tv_time, "上映时间: " + item.getYear());
         Glide.with(mContext).load(item.getImages().getLarge()).into((ImageView) helper.getView(R.id.iv_image));
     }
 
@@ -39,9 +39,9 @@ public class MovieListAdapter extends BaseListAdapter<SubjectsBean> {
             s += item.getName() + "/";
         }
         if (s.equals("")) {
-            return "暂无";
+            return "导演: 暂无";
         }
-        return "导演:" + s.substring(0, s.length() - 1);
+        return "导演: " + s.substring(0, s.length() - 1);
     }
 
     /**
@@ -55,9 +55,9 @@ public class MovieListAdapter extends BaseListAdapter<SubjectsBean> {
             s += item.getName() + "/";
         }
         if (s.equals("")) {
-            return "暂无";
+            return "演员: 暂无";
         }
-        return "演员:" + s.substring(0, s.length() - 1);
+        return "演员: " + s.substring(0, s.length() - 1);
     }
 
     /**

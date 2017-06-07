@@ -1,6 +1,7 @@
 package com.zs.douban.api;
 
 import com.zs.douban.model.MovieModel;
+import com.zs.douban.model.ReadModel;
 import com.zs.douban.utils.Constant;
 
 import java.util.Map;
@@ -23,5 +24,11 @@ public interface DoubanApi {
 
     @GET(Constant.MOVIE_TOP)
     Observable<MovieModel> top(@QueryMap Map<String, Object> params);
+
+    @GET(Constant.READ)
+    Observable<ReadModel> read(@QueryMap Map<String, Object> params);
+
+   // @GET(Constant.MUSIC)
+    //Observable<ReadModel> music(@QueryMap Map<String, Object> params);
 
 }

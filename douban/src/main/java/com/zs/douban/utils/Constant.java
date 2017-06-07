@@ -10,7 +10,7 @@ public interface Constant {
     String MOVIE_HOT = "movie/in_theaters";
     String MOVIE_COMING = "movie/coming_soon";
     String MOVIE_TOP = "movie/top250";
-    String READ = "";
+    String READ = "book/search?q=android&fields=id,title,author,images,rating,url,publisher,pubdate";
     String MUSIC = "";
     String PAGE_INDEX = "pageIndex" ;
 }
