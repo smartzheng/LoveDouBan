@@ -1,4 +1,4 @@
-package com.zs.douban.module.fragment;
+package com.zs.douban.view.fragment;
 
 /**
  * Created by smartzheng on 2017/4/3.

@@ -1,4 +1,4 @@
-package com.zs.douban.module.base;
+package com.zs.douban.view.base;
 
 import com.zs.douban.api.DoubanApi;
 import com.zs.douban.utils.Constant;

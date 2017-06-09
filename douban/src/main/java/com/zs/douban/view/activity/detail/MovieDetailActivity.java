@@ -1,6 +1,6 @@
-package com.zs.douban.module.activity.detail;
+package com.zs.douban.view.activity.detail;
 
-import com.zs.douban.module.base.BaseActivity;
+import com.zs.douban.view.base.BaseActivity;
 
 /**
  * Created by smartzheng on 2017/4/3.

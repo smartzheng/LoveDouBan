@@ -1,4 +1,4 @@
-package com.zs.douban.module.adapter;
+package com.zs.douban.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

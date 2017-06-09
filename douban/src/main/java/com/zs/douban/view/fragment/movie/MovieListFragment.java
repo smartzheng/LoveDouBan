@@ -1,4 +1,4 @@
-package com.zs.douban.module.fragment.movie;
+package com.zs.douban.view.fragment.movie;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,9 +9,9 @@ import com.zs.douban.R;
 import com.zs.douban.injector.component.DaggerMovieListComponent;
 import com.zs.douban.injector.module.MovieListModule;
 import com.zs.douban.model.MovieModel;
-import com.zs.douban.module.adapter.MovieListAdapter;
-import com.zs.douban.module.base.BaseFragment;
-import com.zs.douban.module.presenter.MovieListPresenter;
+import com.zs.douban.adapter.MovieListAdapter;
+import com.zs.douban.view.base.BaseFragment;
+import com.zs.douban.presenter.MovieListPresenter;
 import com.zs.douban.utils.Constant;
 import com.zs.douban.utils.SwipeRefreshHelper;
 

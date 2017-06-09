@@ -1,7 +1,7 @@
 package com.zs.douban.injector.module;
 
-import com.zs.douban.module.fragment.book.ReadFragment;
-import com.zs.douban.module.presenter.ReadPresenter;
+import com.zs.douban.view.fragment.book.ReadFragment;
+import com.zs.douban.presenter.ReadPresenter;
 
 import javax.inject.Singleton;
 

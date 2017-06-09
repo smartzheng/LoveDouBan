@@ -1,7 +1,7 @@
 package com.zs.douban.injector.module;
 
-import com.zs.douban.module.fragment.movie.MovieListFragment;
-import com.zs.douban.module.presenter.MovieListPresenter;
+import com.zs.douban.view.fragment.movie.MovieListFragment;
+import com.zs.douban.presenter.MovieListPresenter;
 
 import javax.inject.Singleton;
 

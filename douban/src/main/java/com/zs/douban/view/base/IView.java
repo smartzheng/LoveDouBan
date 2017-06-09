@@ -1,4 +1,4 @@
-package com.zs.douban.module.base;
+package com.zs.douban.view.base;
 
 /**
  * Created by smartzheng on 2017/4/4.

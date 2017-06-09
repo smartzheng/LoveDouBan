@@ -1,4 +1,4 @@
-package com.zs.douban.module.fragment.movie;
+package com.zs.douban.view.fragment.movie;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
-import com.zs.douban.module.adapter.HomeTabsAdapter;
+import com.zs.douban.adapter.HomeTabsAdapter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

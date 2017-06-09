@@ -1,4 +1,4 @@
-package com.zs.douban.module.activity.home;
+package com.zs.douban.view.activity.home;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -15,14 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.zs.douban.R;
-import com.zs.douban.module.fragment.movie.MovieFragment;
-import com.zs.douban.module.fragment.music.MusicFragment;
-import com.zs.douban.module.fragment.book.ReadFragment;
+import com.zs.douban.view.fragment.book.ReadFragment;
+import com.zs.douban.view.fragment.movie.MovieFragment;
+import com.zs.douban.view.fragment.music.MusicFragment;
 
 import java.util.ArrayList;
 
@@ -37,8 +36,6 @@ public class HomeActivity extends AppCompatActivity {
     AppBarLayout mAppbar;
     @InjectView(R.id.main_content)
     CoordinatorLayout mMainContent;
-    @InjectView(R.id.container)
-    FrameLayout mContainer;
     @InjectView(R.id.nav_view)
     NavigationView mNavView;
     @InjectView(R.id.drawer_layout)

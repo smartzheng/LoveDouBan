@@ -1,4 +1,4 @@
-package com.zs.douban.module.fragment.book;
+package com.zs.douban.view.fragment.book;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,9 @@ import com.zs.douban.R;
 import com.zs.douban.injector.component.DaggerReadComponent;
 import com.zs.douban.injector.module.ReadModule;
 import com.zs.douban.model.ReadModel;
-import com.zs.douban.module.adapter.ReadAdapter;
-import com.zs.douban.module.base.BaseFragment;
-import com.zs.douban.module.presenter.ReadPresenter;
+import com.zs.douban.adapter.ReadAdapter;
+import com.zs.douban.view.base.BaseFragment;
+import com.zs.douban.presenter.ReadPresenter;
 import com.zs.douban.utils.SwipeRefreshHelper;
 
 import javax.inject.Inject;

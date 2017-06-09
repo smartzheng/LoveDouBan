@@ -1,8 +1,8 @@
-package com.zs.douban.module.presenter;
+package com.zs.douban.presenter;
 
 import com.zs.douban.model.MovieModel;
-import com.zs.douban.module.base.IView;
-import com.zs.douban.module.base.BasePresenter;
+import com.zs.douban.view.base.IView;
+import com.zs.douban.view.base.BasePresenter;
 
 import java.util.HashMap;
 import java.util.Map;

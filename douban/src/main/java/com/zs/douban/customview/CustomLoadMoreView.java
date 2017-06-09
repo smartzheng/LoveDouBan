@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.zs.douban.R;
 
 /**
- * Created by BlingBling on 2016/10/15.
+ * Created by smartzheng on 2017/6/5.
  */
 
 public final class CustomLoadMoreView extends LoadMoreView {

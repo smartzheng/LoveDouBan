@@ -1,4 +1,4 @@
-package com.zs.douban.module.base;
+package com.zs.douban.view.base;
 
 import com.zhy.autolayout.AutoLayoutActivity;
 

@@ -1,4 +1,4 @@
-package com.zs.douban.module.adapter;
+package com.zs.douban.adapter;
 
 import android.widget.ImageView;
 
@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zs.douban.R;
 import com.zs.douban.model.MovieModel.SubjectsBean;
-import com.zs.douban.module.base.BaseListAdapter;
+import com.zs.douban.view.base.BaseListAdapter;
 
 import java.util.List;
 
