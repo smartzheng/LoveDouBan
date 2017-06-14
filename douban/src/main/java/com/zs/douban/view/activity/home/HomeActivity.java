@@ -11,17 +11,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
+import com.zhy.autolayout.AutoLayoutActivity;
 import com.zs.douban.R;
-import com.zs.douban.view.fragment.book.ReadFragment;
 import com.zs.douban.view.fragment.movie.MovieFragment;
-import com.zs.douban.view.fragment.music.MusicFragment;
+import com.zs.douban.view.fragment.music.MusicListFragment;
+import com.zs.douban.view.fragment.read.ReadListFragment;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AutoLayoutActivity {
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
     @InjectView(R.id.appbar)
@@ -61,8 +61,8 @@ public class HomeActivity extends AppCompatActivity {
         selectedTheme = 0;//sp中取出
         fgmList = new ArrayList<>();
         fgmList.add(new MovieFragment());
-        fgmList.add(new ReadFragment());
-        fgmList.add(new MusicFragment());
+        fgmList.add(new ReadListFragment());
+        fgmList.add(new MusicListFragment());
     }
 
     private void initBottomBar() {
@@ -117,12 +117,29 @@ public class HomeActivity extends AppCompatActivity {
      * 设置DrawerLayout侧滑菜单选择事件
      */
     private void initDrawer() {
+        mNavView.getMenu().getItem(0).setChecked(true);
         //设置
         if (mNavView != null) {
             mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     item.setChecked(true);
+                    switch(item.getItemId()){
+                        case R.id.nav_home:
+
+                            break;
+                        case R.id.nav_like:
+
+                            break;
+                        case R.id.nav_friends:
+
+                            break;
+                        case R.id.nav_setting:
+
+                            break;
+                        default:
+                            break;
+                    }
                     mDrawerLayout.closeDrawers();
                     return true;
                 }

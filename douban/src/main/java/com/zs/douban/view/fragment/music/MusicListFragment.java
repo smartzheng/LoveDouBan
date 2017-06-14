@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zs.douban.R;
-import com.zs.douban.view.base.BaseFragment;
+import com.zs.douban.view.base.BaseListFragment;
 
 /**
  * Created by smartzheng on 2017/4/3.
  *
  */
 
-public class MusicFragment extends BaseFragment {
+public class MusicListFragment extends BaseListFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

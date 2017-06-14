@@ -13,7 +13,7 @@ import rx.Observable;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class ReadPresenter extends BasePresenter<ReadModel> {
+public class ReadPresenter extends BasePresenter<ReadModel,Map<String,Object>> {
     private HashMap<String, Object> param;
     private int mStart = 0;
     public ReadPresenter(IView<ReadModel> view) {
@@ -46,8 +46,9 @@ public class ReadPresenter extends BasePresenter<ReadModel> {
 
     @Override
     protected Map<String, Object> initParam() {
-        mStart = 0;
+        mStart = 10;
         param.put("start", mStart);
+        param.put("count", 20);
         return param;
     }
 }

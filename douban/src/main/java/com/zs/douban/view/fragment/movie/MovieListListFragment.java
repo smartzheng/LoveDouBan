@@ -1,8 +1,10 @@
 package com.zs.douban.view.fragment.movie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zs.douban.R;
@@ -10,7 +12,8 @@ import com.zs.douban.injector.component.DaggerMovieListComponent;
 import com.zs.douban.injector.module.MovieListModule;
 import com.zs.douban.model.MovieModel;
 import com.zs.douban.adapter.MovieListAdapter;
-import com.zs.douban.view.base.BaseFragment;
+import com.zs.douban.view.activity.detail.MovieDetailDetailActivity;
+import com.zs.douban.view.base.BaseListFragment;
 import com.zs.douban.presenter.MovieListPresenter;
 import com.zs.douban.utils.Constant;
 import com.zs.douban.utils.SwipeRefreshHelper;
@@ -23,13 +26,12 @@ import butterknife.InjectView;
  * Created by smartzheng on 2017/4/3.
  */
 
-public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQuickAdapter.RequestLoadMoreListener {
+public class MovieListListFragment extends BaseListFragment<MovieModel> implements BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
     @Inject
     MovieListPresenter mPresenter;
     @InjectView(R.id.rv_movie)
     RecyclerView mRecyclerView;
     private int total = 0;
-
     private int currentPage;
 
     @Override
@@ -37,12 +39,12 @@ public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQ
         return R.layout.fragment_movie_list;
     }
 
-    public MovieListFragment() {
+    public MovieListListFragment() {
 
     }
 
-    public static MovieListFragment getInstance(int currentPage) {
-        MovieListFragment fragment = new MovieListFragment();
+    public static MovieListListFragment getInstance(int currentPage) {
+        MovieListListFragment fragment = new MovieListListFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(Constant.PAGE_INDEX, currentPage);
         fragment.setArguments(bundle);
@@ -63,6 +65,7 @@ public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQ
         mAdapter = new MovieListAdapter();
         mAdapter.setOnLoadMoreListener(this, mRecyclerView);
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        mAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -122,5 +125,12 @@ public class MovieListFragment extends BaseFragment<MovieModel> implements BaseQ
         } else {
             mAdapter.loadMoreEnd(false);
         }
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        Intent intent = new Intent(mContext, MovieDetailDetailActivity.class);
+        intent.putExtra("id",((MovieModel.SubjectsBean)adapter.getData().get(position)).getId());
+        startActivity(intent);
     }
 }

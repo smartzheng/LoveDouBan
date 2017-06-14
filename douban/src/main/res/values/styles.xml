@@ -23,9 +23,29 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">40px</item>
     </style>
+    <style name="TitleStyleDetail">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">60px</item>
+    </style>
     <style name="ContentStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">30px</item>
+    </style>
+    <style name="ContentStyleDetail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">45px</item>
+    </style>
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
     </style>
 </resources>

@@ -6,7 +6,7 @@
     <tab
         id="@+id/tab_read"
         icon="@drawable/ic_read"
-        title="书籍" />
+        title="读书" />
     <tab
         id="@+id/tab_music"
         icon="@drawable/ic_music"

@@ -3,8 +3,6 @@ package com.zs.douban.view.base;
 import com.zs.douban.api.DoubanApi;
 import com.zs.douban.utils.Constant;
 
-import java.util.Map;
-
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,7 +16,7 @@ import rx.schedulers.Schedulers;
  *
  */
 
-public abstract class BasePresenter<T> {
+public abstract class BasePresenter<T,P> {
     protected IView<T> mIView;
     protected static DoubanApi sApi;
     protected BasePresenter() {
@@ -37,8 +35,8 @@ public abstract class BasePresenter<T> {
     /**
      * 获取每个页面对应的Observable
      */
-    public abstract Observable<T> getObservable(Map<String, Object> param);
-    public void getData(Map<String, Object> param){
+    public abstract Observable<T> getObservable(P param);
+    public void getData(P param){
         getObservable(param)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -73,7 +71,7 @@ public abstract class BasePresenter<T> {
         getData(moreParam());
     }
 
-    protected abstract Map<String,Object> moreParam();
+    protected abstract P moreParam();
 
-    protected abstract Map<String,Object> initParam();
+    protected abstract P initParam();
 }

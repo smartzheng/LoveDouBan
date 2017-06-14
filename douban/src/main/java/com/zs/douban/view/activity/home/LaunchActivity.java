@@ -1,13 +1,13 @@
 package com.zs.douban.view.activity.home;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.zhy.autolayout.AutoLayoutActivity;
 import com.zs.douban.R;
 
-public class LaunchActivity extends AppCompatActivity {
+public class LaunchActivity extends AutoLayoutActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

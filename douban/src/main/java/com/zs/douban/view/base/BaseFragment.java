@@ -3,16 +3,11 @@ package com.zs.douban.view.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zs.douban.R;
-import com.zs.douban.utils.SwipeRefreshHelper;
-
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by smartzheng on 2017/4/3.
@@ -20,14 +15,9 @@ import butterknife.InjectView;
  */
 
 public abstract class BaseFragment<T> extends android.support.v4.app.Fragment implements IView<T> {
-    protected boolean isRefresh = true;
-    protected int total;
-    @InjectView(R.id.srl_root)
-    protected SwipeRefreshLayout mSrlRoot;
     protected Context mContext;
     //缓存Fragment view
-    private View mRootView;
-    protected BaseListAdapter mAdapter;
+    protected View mRootView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +34,6 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
             getArgs();
             initInjector();
             initViews();
-            initSwipeRefresh();
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
         if (parent != null) {
@@ -66,20 +55,7 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
         initData();
     }
 
-    /**
-     * 初始化下拉刷新
-     */
-    private void initSwipeRefresh() {
-        if (mSrlRoot != null) {
-            SwipeRefreshHelper.init(mSrlRoot, new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    //这个写法不好
-                    updateViews(true);
-                }
-            });
-        }
-    }
+
 
     /**
      * 绑定布局文件
@@ -98,16 +74,4 @@ public abstract class BaseFragment<T> extends android.support.v4.app.Fragment im
      */
     protected abstract void initViews();
 
-    /**
-     * 更新视图控件
-     *
-     * @param isRefresh 刷新或者加载更多
-     */
-    protected abstract void updateViews(boolean isRefresh);
-
-    protected void finishLoad() {
-        SwipeRefreshHelper.controlRefresh(mSrlRoot, false);
-        if (mAdapter.isLoading())
-            mAdapter.loadMoreComplete();
-    }
 }

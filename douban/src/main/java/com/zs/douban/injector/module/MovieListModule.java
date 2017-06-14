@@ -1,6 +1,6 @@
 package com.zs.douban.injector.module;
 
-import com.zs.douban.view.fragment.movie.MovieListFragment;
+import com.zs.douban.view.fragment.movie.MovieListListFragment;
 import com.zs.douban.presenter.MovieListPresenter;
 
 import javax.inject.Singleton;
@@ -14,10 +14,10 @@ import dagger.Provides;
  */
 @Module
 public class MovieListModule {
-    private final MovieListFragment mIView;
+    private final MovieListListFragment mIView;
     private int pageIndex;
 
-    public MovieListModule(MovieListFragment view,int pageIndex) {
+    public MovieListModule(MovieListListFragment view, int pageIndex) {
         this.mIView = view;
         this.pageIndex = pageIndex;
     }

@@ -1,5 +1,6 @@
 package com.zs.douban.api;
 
+import com.zs.douban.model.MovieDetailModel;
 import com.zs.douban.model.MovieModel;
 import com.zs.douban.model.ReadModel;
 import com.zs.douban.utils.Constant;
@@ -7,6 +8,7 @@ import com.zs.douban.utils.Constant;
 import java.util.Map;
 
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
@@ -21,6 +23,9 @@ public interface DoubanApi {
 
     @GET(Constant.MOVIE_COMING)
     Observable<MovieModel> coming(@QueryMap Map<String, Object> params);
+
+    @GET(Constant.MOVIE_DETAIL)
+    Observable<MovieDetailModel> movieDetail(@Path("id") int id);
 
     @GET(Constant.MOVIE_TOP)
     Observable<MovieModel> top(@QueryMap Map<String, Object> params);

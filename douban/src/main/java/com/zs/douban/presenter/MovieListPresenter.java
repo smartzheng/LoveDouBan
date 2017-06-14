@@ -13,7 +13,7 @@ import rx.Observable;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class MovieListPresenter extends BasePresenter<MovieModel> {
+public class MovieListPresenter extends BasePresenter<MovieModel,Map<String,Object>> {
     private HashMap<String, Object> param;
     private int mPageIndex;
     private int mStart = 0;
@@ -37,7 +37,6 @@ public class MovieListPresenter extends BasePresenter<MovieModel> {
                 return null;
         }
     }
-
 
     @Override
     protected void success(MovieModel model) {

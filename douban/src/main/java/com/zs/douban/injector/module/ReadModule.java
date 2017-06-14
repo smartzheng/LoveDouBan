@@ -1,6 +1,6 @@
 package com.zs.douban.injector.module;
 
-import com.zs.douban.view.fragment.book.ReadFragment;
+import com.zs.douban.view.fragment.read.ReadListFragment;
 import com.zs.douban.presenter.ReadPresenter;
 
 import javax.inject.Singleton;
@@ -14,9 +14,9 @@ import dagger.Provides;
  */
 @Module
 public class ReadModule {
-    private final ReadFragment mIView;
+    private final ReadListFragment mIView;
 
-    public ReadModule(ReadFragment view) {
+    public ReadModule(ReadListFragment view) {
         this.mIView = view;
     }
     @Provides

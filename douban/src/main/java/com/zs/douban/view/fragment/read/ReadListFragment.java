@@ -1,4 +1,4 @@
-package com.zs.douban.view.fragment.book;
+package com.zs.douban.view.fragment.read;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import com.zs.douban.injector.component.DaggerReadComponent;
 import com.zs.douban.injector.module.ReadModule;
 import com.zs.douban.model.ReadModel;
 import com.zs.douban.adapter.ReadAdapter;
-import com.zs.douban.view.base.BaseFragment;
+import com.zs.douban.view.base.BaseListFragment;
 import com.zs.douban.presenter.ReadPresenter;
 import com.zs.douban.utils.SwipeRefreshHelper;
 
@@ -23,7 +23,7 @@ import butterknife.InjectView;
  *
  */
 
-public class ReadFragment extends BaseFragment<ReadModel> implements BaseQuickAdapter.RequestLoadMoreListener  {
+public class ReadListFragment extends BaseListFragment<ReadModel> implements BaseQuickAdapter.RequestLoadMoreListener  {
     @Inject
     ReadPresenter mPresenter;
     @InjectView(R.id.rv_read)
@@ -63,6 +63,7 @@ public class ReadFragment extends BaseFragment<ReadModel> implements BaseQuickAd
 
     @Override
     public void initData() {
+        total = 300;
         SwipeRefreshHelper.controlRefresh(mSrlRoot, true);
         updateViews(true);
     }

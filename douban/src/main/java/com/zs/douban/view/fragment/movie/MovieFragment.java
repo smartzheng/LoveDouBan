@@ -48,9 +48,9 @@ public class MovieFragment extends Fragment {
             //创建了一个viewpager的数据适配器
             HomeTabsAdapter adapter = new HomeTabsAdapter(getChildFragmentManager());
             //Fragment作为viewpager 要展示的内容
-            MovieListFragment hotFragment =  MovieListFragment.getInstance(0);
-            MovieListFragment comingFragment = MovieListFragment.getInstance(1);
-            MovieListFragment topFragment = MovieListFragment.getInstance(2);
+            MovieListListFragment hotFragment =  MovieListListFragment.getInstance(0);
+            MovieListListFragment comingFragment = MovieListListFragment.getInstance(1);
+            MovieListListFragment topFragment = MovieListListFragment.getInstance(2);
             adapter.addFragment(hotFragment, "正在热映");
             adapter.addFragment(comingFragment, "即将上映");
             adapter.addFragment(topFragment, "Top250");
