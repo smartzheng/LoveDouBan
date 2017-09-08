@@ -1,4 +1,4 @@
-package com.zs.douban.model;
+package com.zs.douban.model.bean;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class MovieModel {
+public class MovieListBean {
     private int count;//请求的个数
     private int start;
     private String title;

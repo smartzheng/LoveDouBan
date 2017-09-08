@@ -1,8 +1,8 @@
 package com.zs.douban.presenter;
 
-import com.zs.douban.model.MovieModel;
+import com.zs.douban.model.bean.MovieListBean;
 import com.zs.douban.view.base.IView;
-import com.zs.douban.view.base.BasePresenter;
+import com.zs.douban.presenter.presenter.BasePresenter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,19 +13,19 @@ import rx.Observable;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class MovieListPresenter extends BasePresenter<MovieModel,Map<String,Object>> {
+public class MovieListPresenter extends BasePresenter<MovieListBean,Map<String,Object>> {
     private HashMap<String, Object> param;
     private int mPageIndex;
     private int mStart = 0;
 
-    public MovieListPresenter(IView<MovieModel> view, int pageIndex) {
+    public MovieListPresenter(IView<MovieListBean> view, int pageIndex) {
         mIView = view;
         this.mPageIndex = pageIndex;
         param = new HashMap<>();
     }
 
     @Override
-    public Observable<MovieModel> getObservable(Map<String, Object> param) {
+    public Observable<MovieListBean> getObservable(Map<String, Object> param) {
         switch (mPageIndex) {
             case 0:
                 return sApi.hot(param);
@@ -39,7 +39,7 @@ public class MovieListPresenter extends BasePresenter<MovieModel,Map<String,Obje
     }
 
     @Override
-    protected void success(MovieModel model) {
+    protected void success(MovieListBean model) {
         mIView.onSuccess(model);
     }
 

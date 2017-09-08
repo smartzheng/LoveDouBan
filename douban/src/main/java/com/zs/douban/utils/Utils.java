@@ -1,7 +1,7 @@
 package com.zs.douban.utils;
 
-import com.zs.douban.model.CastsBean;
-import com.zs.douban.model.DirectorsBean;
+import com.zs.douban.model.bean.CastsBean;
+import com.zs.douban.model.bean.DirectorsBean;
 
 import java.util.List;
 

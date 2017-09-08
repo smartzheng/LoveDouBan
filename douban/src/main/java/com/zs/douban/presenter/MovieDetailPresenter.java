@@ -1,7 +1,7 @@
 package com.zs.douban.presenter;
 
-import com.zs.douban.model.MovieDetailModel;
-import com.zs.douban.view.base.BasePresenter;
+import com.zs.douban.model.bean.MovieDetailBean;
+import com.zs.douban.presenter.presenter.BasePresenter;
 import com.zs.douban.view.base.IView;
 
 import rx.Observable;
@@ -10,21 +10,21 @@ import rx.Observable;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class MovieDetailPresenter extends BasePresenter<MovieDetailModel,Integer> {
+public class MovieDetailPresenter extends BasePresenter<MovieDetailBean,Integer> {
     private Integer mId;
-    public MovieDetailPresenter(IView<MovieDetailModel> view , int id) {
+    public MovieDetailPresenter(IView<MovieDetailBean> view , int id) {
         mIView = view;
         mId  = id;
     }
 
     @Override
-    public Observable<MovieDetailModel> getObservable(Integer id) {
+    public Observable<MovieDetailBean> getObservable(Integer id) {
        return sApi.movieDetail(id);
     }
 
 
     @Override
-    protected void success(MovieDetailModel model) {
+    protected void success(MovieDetailBean model) {
         mIView.onSuccess(model);
     }
 

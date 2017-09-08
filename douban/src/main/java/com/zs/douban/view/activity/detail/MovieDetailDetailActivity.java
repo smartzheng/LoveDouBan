@@ -23,7 +23,7 @@ import com.zhy.autolayout.AutoLayoutActivity;
 import com.zs.douban.R;
 import com.zs.douban.injector.component.DaggerMovieDetailComponent;
 import com.zs.douban.injector.module.MovieDetailModule;
-import com.zs.douban.model.MovieDetailModel;
+import com.zs.douban.model.bean.MovieDetailBean;
 import com.zs.douban.presenter.MovieDetailPresenter;
 import com.zs.douban.utils.Utils;
 import com.zs.douban.view.base.IView;
@@ -37,7 +37,7 @@ import butterknife.InjectView;
  * Created by smartzheng on 2017/4/3.
  */
 
-public class MovieDetailDetailActivity extends AutoLayoutActivity implements IView<MovieDetailModel> {
+public class MovieDetailDetailActivity extends AutoLayoutActivity implements IView<MovieDetailBean> {
     @InjectView(R.id.backdrop)
     ImageView mBackdrop;
     @InjectView(R.id.toolbar)
@@ -92,7 +92,7 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
     }
 
     @Override
-    public void onSuccess(final MovieDetailModel data) {
+    public void onSuccess(final MovieDetailBean data) {
         Glide.with(MovieDetailDetailActivity.this)
                 .load(data.getImages().getLarge())
                 .crossFade()

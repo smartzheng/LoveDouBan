@@ -1,7 +1,7 @@
 package com.zs.douban.presenter;
 
-import com.zs.douban.model.ReadModel;
-import com.zs.douban.view.base.BasePresenter;
+import com.zs.douban.model.bean.ReadBean;
+import com.zs.douban.presenter.presenter.BasePresenter;
 import com.zs.douban.view.base.IView;
 
 import java.util.HashMap;
@@ -13,22 +13,22 @@ import rx.Observable;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class ReadPresenter extends BasePresenter<ReadModel,Map<String,Object>> {
+public class ReadPresenter extends BasePresenter<ReadBean,Map<String,Object>> {
     private HashMap<String, Object> param;
     private int mStart = 0;
-    public ReadPresenter(IView<ReadModel> view) {
+    public ReadPresenter(IView<ReadBean> view) {
         mIView = view;
         param = new HashMap<>();
     }
 
     @Override
-    public Observable<ReadModel> getObservable(Map<String, Object> param) {
+    public Observable<ReadBean> getObservable(Map<String, Object> param) {
        return sApi.read(param);
     }
 
 
     @Override
-    protected void success(ReadModel model) {
+    protected void success(ReadBean model) {
         mIView.onSuccess(model);
     }
 

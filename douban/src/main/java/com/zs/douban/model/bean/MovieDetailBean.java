@@ -1,4 +1,4 @@
-package com.zs.douban.model;
+package com.zs.douban.model.bean;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * Created by smartzheng on 2017/6/13.
  */
 
-public class MovieDetailModel {
+public class MovieDetailBean {
 
     /**
      * aka : ["9：末世决战","九","Number 9","机器人9号"]

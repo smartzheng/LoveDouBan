@@ -1,4 +1,4 @@
-package com.zs.douban.model;
+package com.zs.douban.model.bean;
 
 /**
  * Created by smartzheng on 2017/6/14.

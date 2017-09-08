@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zs.douban.R;
 import com.zs.douban.injector.component.DaggerMovieListComponent;
 import com.zs.douban.injector.module.MovieListModule;
-import com.zs.douban.model.MovieModel;
+import com.zs.douban.model.bean.MovieListBean;
 import com.zs.douban.adapter.MovieListAdapter;
 import com.zs.douban.view.activity.detail.MovieDetailDetailActivity;
 import com.zs.douban.view.base.BaseListFragment;
@@ -26,7 +26,7 @@ import butterknife.InjectView;
  * Created by smartzheng on 2017/4/3.
  */
 
-public class MovieListListFragment extends BaseListFragment<MovieModel> implements BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
+public class MovieListListFragment extends BaseListFragment<MovieListBean> implements BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
     @Inject
     MovieListPresenter mPresenter;
     @InjectView(R.id.rv_movie)
@@ -103,7 +103,7 @@ public class MovieListListFragment extends BaseListFragment<MovieModel> implemen
     }
 
     @Override
-    public void onSuccess(MovieModel data) {
+    public void onSuccess(MovieListBean data) {
         finishLoad();
         total = data.getTotal();
         if (isRefresh) {
@@ -130,7 +130,7 @@ public class MovieListListFragment extends BaseListFragment<MovieModel> implemen
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         Intent intent = new Intent(mContext, MovieDetailDetailActivity.class);
-        intent.putExtra("id",((MovieModel.SubjectsBean)adapter.getData().get(position)).getId());
+        intent.putExtra("id",((MovieListBean.SubjectsBean)adapter.getData().get(position)).getId());
         startActivity(intent);
     }
 }

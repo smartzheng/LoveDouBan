@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zs.douban.R;
-import com.zs.douban.model.ReadModel.BooksBean;
+import com.zs.douban.model.bean.ReadBean.BooksBean;
 import com.zs.douban.view.base.BaseListAdapter;
 
 import java.util.List;

@@ -1,7 +1,8 @@
-package com.zs.douban.view.base;
+package com.zs.douban.presenter.presenter;
 
 import com.zs.douban.api.DoubanApi;
 import com.zs.douban.utils.Constant;
+import com.zs.douban.view.base.IView;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

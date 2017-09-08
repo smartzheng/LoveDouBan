@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zs.douban.R;
 import com.zs.douban.injector.component.DaggerReadComponent;
 import com.zs.douban.injector.module.ReadModule;
-import com.zs.douban.model.ReadModel;
+import com.zs.douban.model.bean.ReadBean;
 import com.zs.douban.adapter.ReadAdapter;
 import com.zs.douban.view.base.BaseListFragment;
 import com.zs.douban.presenter.ReadPresenter;
@@ -23,7 +23,7 @@ import butterknife.InjectView;
  *
  */
 
-public class ReadListFragment extends BaseListFragment<ReadModel> implements BaseQuickAdapter.RequestLoadMoreListener  {
+public class ReadListFragment extends BaseListFragment<ReadBean> implements BaseQuickAdapter.RequestLoadMoreListener  {
     @Inject
     ReadPresenter mPresenter;
     @InjectView(R.id.rv_read)
@@ -74,7 +74,7 @@ public class ReadListFragment extends BaseListFragment<ReadModel> implements Bas
     }
 
     @Override
-    public void onSuccess(ReadModel data) {
+    public void onSuccess(ReadBean data) {
         finishLoad();
         if (isRefresh) {
            mAdapter.initData(data.getBooks());
