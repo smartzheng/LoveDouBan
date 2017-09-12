@@ -2,7 +2,6 @@ package com.zs.douban.presenter;
 
 import com.zs.douban.model.bean.MovieListBean;
 import com.zs.douban.view.base.IView;
-import com.zs.douban.presenter.presenter.BasePresenter;
 
 import java.util.HashMap;
 import java.util.Map;

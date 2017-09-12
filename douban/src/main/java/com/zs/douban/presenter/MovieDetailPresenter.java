@@ -1,7 +1,6 @@
 package com.zs.douban.presenter;
 
 import com.zs.douban.model.bean.MovieDetailBean;
-import com.zs.douban.presenter.presenter.BasePresenter;
 import com.zs.douban.view.base.IView;
 
 import rx.Observable;

@@ -1,4 +1,4 @@
-package com.zs.douban.presenter.presenter;
+package com.zs.douban.presenter;
 
 import com.zs.douban.api.DoubanApi;
 import com.zs.douban.utils.Constant;
