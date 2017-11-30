@@ -28,7 +28,7 @@ public class MovieListAdapter extends BaseListAdapter<SubjectsBean> {
         helper.setText(R.id.tv_title, item.getTitle())
                 .setText(R.id.tv_director, directors2StringBySlash(item.getDirectors()))
                 .setText(R.id.tv_cast, casts2StringBySlash(item.getCasts()))
-                .setText(R.id.tv_time, "上映时间: " + item.getYear())
+                .setText(R.id.tv_name, "上映时间: " + item.getYear())
                 .setRating(R.id.rt_rating,(float)( item.getRating().getAverage()/2.0));
         if (item.getRating().getAverage()==0){
             helper.getView(R.id.rt_rating).setVisibility(View.INVISIBLE);

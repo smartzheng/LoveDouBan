@@ -62,7 +62,7 @@
             <TextView
                 android:id="@+id/tv_title"
                 style="@style/TitleStyleDetail"
-                android:text="东邪西毒"
+                android:text=""
             />
             <RatingBar
                 android:id="@+id/rt_rating"
@@ -78,24 +78,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20px"
-                android:text="暂无评分"/>
+                android:text=""/>
             <TextView
                 android:id="@+id/tv_director"
                 style="@style/ContentStyleDetail"
                 android:layout_marginTop="20px"
-                android:text="导演:王家卫"
+                android:text="导演："
             />
             <TextView
                 android:id="@+id/tv_cast"
                 style="@style/ContentStyleDetail"
                 android:layout_marginTop="30px"
-                android:text="主演:张国荣/梁家辉/林青霞/梁朝伟"
+                android:text="主演："
             />
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_name"
                 style="@style/ContentStyleDetail"
                 android:layout_marginTop="30px"
-                android:text="上映时间:1996"
+                android:text="上映时间："
             />
             <TextView
                 android:id="@+id/tv_summary"
@@ -107,10 +107,22 @@
                 style="@style/ContentStyleDetail"
                 android:layout_marginTop="30px"
                 android:text="影人"
+                android:textStyle="bold"
             />
             <android.support.v7.widget.RecyclerView
                 android:layout_marginTop="10px"
                 android:id="@+id/rv_avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="bold"
+                style="@style/ContentStyleDetail"
+                android:layout_marginTop="30px"
+                android:text="热评"
+            />
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="10px"
+                android:id="@+id/rv_reviews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 

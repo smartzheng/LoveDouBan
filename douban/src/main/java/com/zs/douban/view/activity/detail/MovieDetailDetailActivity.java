@@ -24,6 +24,7 @@ import com.bumptech.glide.request.target.Target;
 import com.zhy.autolayout.AutoLayoutActivity;
 import com.zs.douban.R;
 import com.zs.douban.adapter.AvatarsAdapter;
+import com.zs.douban.adapter.ReviewsAdapter;
 import com.zs.douban.injector.component.DaggerMovieDetailComponent;
 import com.zs.douban.injector.module.MovieDetailModule;
 import com.zs.douban.model.bean.MovieDetailBean;
@@ -61,7 +62,7 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
     TextView mTvDirector;
     @InjectView(R.id.tv_cast)
     TextView mTvCast;
-    @InjectView(R.id.tv_time)
+    @InjectView(R.id.tv_name)
     TextView mTvTime;
     @InjectView(R.id.tv_summary)
     TextView mTvSummary;
@@ -69,6 +70,8 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
     CoordinatorLayout mMainContent;
     @InjectView(R.id.rv_avatars)
     RecyclerView mRvAvatars;
+    @InjectView(R.id.rv_reviews)
+    RecyclerView mRvReviews;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -125,9 +128,9 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
         //标题
         mTvTitle.setText(data.getTitle());
         //演员，导演，年代
-        mTvCast.setText(Utils.casts2StringBySlash(data.getCasts()));
-        mTvTime.setText("上映时间: " + data.getYear());
-        mTvDirector.setText(Utils.directors2StringBySlash(data.getDirectors()));
+        mTvCast.setText(Utils.boldTitle(Utils.casts2StringBySlash(data.getCasts())));
+        mTvTime.setText(Utils.boldTitle("上映时间：" + data.getYear()));
+        mTvDirector.setText(Utils.boldTitle(Utils.directors2StringBySlash(data.getDirectors())));
         //评分
         if (data.getRating().getAverage() == 0) {
             mRtRating.setVisibility(View.GONE);
@@ -139,14 +142,22 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
         }
         //影人列表图片
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        layoutManager.setSmoothScrollbarEnabled(true);
-        layoutManager.setAutoMeasureEnabled(true);
-        mRvAvatars.setHasFixedSize(true);
-        mRvAvatars.setNestedScrollingEnabled(false);
-        mRvAvatars.setLayoutManager(layoutManager);
+        setNestedScrollNormal(layoutManager, mRvAvatars);
         mRvAvatars.setAdapter(new AvatarsAdapter(this, data.getAvatarsImage()));
         //简介
-        mTvSummary.setText("简介：" + data.getSummary());
+        mTvSummary.setText(Utils.boldTitle("简介：" + data.getSummary()));
+        //简评
+        LinearLayoutManager reviewsLayoutManager = new LinearLayoutManager(this);
+        setNestedScrollNormal(reviewsLayoutManager, mRvReviews);
+        mRvReviews.setAdapter(new ReviewsAdapter(this, data.getPopular_reviews()));
+    }
+
+    private void setNestedScrollNormal(LinearLayoutManager layoutManager, RecyclerView rv) {
+        layoutManager.setSmoothScrollbarEnabled(true);
+        layoutManager.setAutoMeasureEnabled(true);
+        rv.setHasFixedSize(true);
+        rv.setNestedScrollingEnabled(false);
+        rv.setLayoutManager(layoutManager);
     }
 
     @Override

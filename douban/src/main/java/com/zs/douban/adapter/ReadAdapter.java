@@ -24,7 +24,7 @@ public class ReadAdapter extends BaseListAdapter<BooksBean> {
         helper.setText(R.id.tv_title, item.getTitle())
                 .setText(R.id.tv_author, authors2StringBySlash(item.getAuthor()))
                 .setText(R.id.tv_publisher, "出版社: " + item.getPublisher())
-                .setText(R.id.tv_time, "出版时间: " + item.getPubdate());
+                .setText(R.id.tv_name, "出版时间: " + item.getPubdate());
         Glide.with(mContext).load(item.getImages().getLarge()).into((ImageView) helper.getView(R.id.iv_image));
     }
 

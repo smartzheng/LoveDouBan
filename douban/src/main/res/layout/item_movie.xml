@@ -75,7 +75,7 @@
                 android:text="主演:张国荣/梁家辉/林青霞/梁朝伟"
             />
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_name"
                 style="@style/ContentStyle"
                 android:layout_below="@+id/tv_cast"
                 android:layout_marginLeft="80px"
