@@ -7,6 +7,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.zhy.autolayout.AutoLayoutActivity;
 import com.zs.douban.R;
+import com.zs.douban.adapter.AvatarsAdapter;
 import com.zs.douban.injector.component.DaggerMovieDetailComponent;
 import com.zs.douban.injector.module.MovieDetailModule;
 import com.zs.douban.model.bean.MovieDetailBean;
@@ -60,8 +63,12 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
     TextView mTvCast;
     @InjectView(R.id.tv_time)
     TextView mTvTime;
+    @InjectView(R.id.tv_summary)
+    TextView mTvSummary;
     @InjectView(R.id.main_content)
     CoordinatorLayout mMainContent;
+    @InjectView(R.id.rv_avatars)
+    RecyclerView mRvAvatars;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,6 +100,7 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
 
     @Override
     public void onSuccess(final MovieDetailBean data) {
+        //顶部背景
         Glide.with(MovieDetailDetailActivity.this)
                 .load(data.getImages().getLarge())
                 .crossFade()
@@ -114,18 +122,31 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
                         });
                     }
                 });
+        //标题
         mTvTitle.setText(data.getTitle());
+        //演员，导演，年代
         mTvCast.setText(Utils.casts2StringBySlash(data.getCasts()));
-        mTvTime.setText("上映时间: "+data.getYear());
+        mTvTime.setText("上映时间: " + data.getYear());
         mTvDirector.setText(Utils.directors2StringBySlash(data.getDirectors()));
+        //评分
         if (data.getRating().getAverage() == 0) {
             mRtRating.setVisibility(View.GONE);
             mTvNoRating.setVisibility(View.VISIBLE);
         } else {
-            mRtRating.setRating((float) (data.getRating().getAverage()/2.0));
+            mRtRating.setRating((float) (data.getRating().getAverage() / 2.0));
             mRtRating.setVisibility(View.VISIBLE);
             mTvNoRating.setVisibility(View.GONE);
         }
+        //影人列表图片
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager.setSmoothScrollbarEnabled(true);
+        layoutManager.setAutoMeasureEnabled(true);
+        mRvAvatars.setHasFixedSize(true);
+        mRvAvatars.setNestedScrollingEnabled(false);
+        mRvAvatars.setLayoutManager(layoutManager);
+        mRvAvatars.setAdapter(new AvatarsAdapter(this, data.getAvatarsImage()));
+        //简介
+        mTvSummary.setText("简介：" + data.getSummary());
     }
 
     @Override

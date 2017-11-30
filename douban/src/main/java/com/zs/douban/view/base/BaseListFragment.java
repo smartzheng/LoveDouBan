@@ -33,10 +33,11 @@ public abstract class BaseListFragment<T> extends BaseFragment<T> implements IVi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (mRootView == null) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        if (mRootView != null) {
             initSwipeRefresh();
         }
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     /**

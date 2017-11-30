@@ -29,8 +29,9 @@
                 android:id="@+id/backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20px"
-                android:scaleType="centerInside"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="50px"
+                android:scaleType="fitCenter"
                 app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
@@ -50,14 +51,14 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:paddingLeft="80px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="30px"
-            android:paddingRight="30px"
             android:paddingBottom="30px"
-                >
+            android:paddingLeft="80px"
+            android:paddingRight="30px"
+            android:paddingTop="30px"
+        >
             <TextView
                 android:id="@+id/tv_title"
                 style="@style/TitleStyleDetail"
@@ -96,7 +97,27 @@
                 android:layout_marginTop="30px"
                 android:text="上映时间:1996"
             />
+            <TextView
+                android:id="@+id/tv_summary"
+                style="@style/ContentStyleDetail"
+                android:layout_marginTop="30px"
+                android:text="简介："
+            />
+            <TextView
+                style="@style/ContentStyleDetail"
+                android:layout_marginTop="30px"
+                android:text="影人"
+            />
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="10px"
+                android:id="@+id/rv_avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
         </LinearLayout>
+
+
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
@@ -104,7 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="48px"
         android:clickable="true"
-        android:src="@drawable/dislike"
+        android:foreground="@drawable/action"
+        app:rippleColor="@color/darkgray"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"/>
 
