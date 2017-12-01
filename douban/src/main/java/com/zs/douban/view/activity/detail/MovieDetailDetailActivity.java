@@ -1,11 +1,13 @@
 package com.zs.douban.view.activity.detail;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,10 +34,13 @@ import com.zs.douban.presenter.MovieDetailPresenter;
 import com.zs.douban.utils.Utils;
 import com.zs.douban.view.base.IView;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by smartzheng on 2017/4/3.
@@ -72,6 +77,8 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
     RecyclerView mRvAvatars;
     @InjectView(R.id.rv_reviews)
     RecyclerView mRvReviews;
+    @InjectView(R.id.fab_play)
+    FloatingActionButton mFabPlay;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -150,6 +157,21 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
         LinearLayoutManager reviewsLayoutManager = new LinearLayoutManager(this);
         setNestedScrollNormal(reviewsLayoutManager, mRvReviews);
         mRvReviews.setAdapter(new ReviewsAdapter(this, data.getPopular_reviews()));
+        setUrl(data.getTrailer_urls(), data.getTitle());
+    }
+
+    private void setUrl(final List<String> trailer_urls, final String title) {
+        mFabPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (trailer_urls != null && trailer_urls.size() > 0) {
+                    Intent intent = new Intent(MovieDetailDetailActivity.this, MoviePlayActivity.class);
+                    intent.putExtra("url", trailer_urls.get(0));
+                    intent.putExtra("title", title);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void setNestedScrollNormal(LinearLayoutManager layoutManager, RecyclerView rv) {
@@ -174,5 +196,10 @@ public class MovieDetailDetailActivity extends AutoLayoutActivity implements IVi
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.sample_actions, menu);
         return true;
+    }
+
+    @OnClick(R.id.fab_play)
+    public void onViewClicked() {
+
     }
 }
