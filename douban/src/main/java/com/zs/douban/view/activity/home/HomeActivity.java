@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import cn.bmob.v3.Bmob;
 
 
 public class HomeActivity extends AutoLayoutActivity {
@@ -52,7 +51,7 @@ public class HomeActivity extends AutoLayoutActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.inject(this);
-        Bmob.initialize(this, "e8f177acd86e0fde391b2af19243fc1b");
+        //Bmob.initialize(this, "e8f177acd86e0fde391b2af19243fc1b");
         initToolBar();
         initDrawer();
         initData();

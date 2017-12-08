@@ -12,7 +12,7 @@ import rx.Observable;
  * Created by smartzheng on 2017/6/2.
  */
 
-public class MovieListPresenter extends BasePresenter<MovieListBean,Map<String,Object>> {
+public class MovieListPresenter extends BasePresenter<MovieListBean, Map<String, Object>> {
     private HashMap<String, Object> param;
     private int mPageIndex;
     private int mStart = 0;
@@ -38,24 +38,24 @@ public class MovieListPresenter extends BasePresenter<MovieListBean,Map<String,O
     }
 
     @Override
-    protected void success(MovieListBean model) {
+    public void success(MovieListBean model) {
         mIView.onSuccess(model);
     }
 
     @Override
-    protected void failed(String msg) {
+    public void failed(String msg) {
 
     }
 
     @Override
-    protected Map<String, Object> moreParam() {
-        mStart+=20;
+    public Map<String, Object> moreParam() {
+        mStart += 20;
         param.put("start", mStart);
         return param;
     }
 
     @Override
-    protected Map<String, Object> initParam() {
+    public Map<String, Object> initParam() {
         mStart = 0;
         param.put("start", mStart);
         param.put("count", 20);

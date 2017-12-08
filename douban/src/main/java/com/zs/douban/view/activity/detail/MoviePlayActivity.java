@@ -68,13 +68,6 @@ public class MoviePlayActivity extends AppCompatActivity {
         }
     }
 
-    private void play() {
-        String url = getIntent().getStringExtra("url");
-        mVideoView.setVideoURI(Uri.parse(url));
-        mVideoView.start();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-    }
-
     //
     private void initPlayer() {
         IjkMediaPlayer.loadLibrariesOnce(null);
@@ -83,6 +76,13 @@ public class MoviePlayActivity extends AppCompatActivity {
         mVideoView.setHudView(mHudView);
         AndroidMediaController controller = new AndroidMediaController(this, false);
         mVideoView.setMediaController(controller);
+    }
+
+    private void play() {
+        String url = getIntent().getStringExtra("url");
+        mVideoView.setVideoURI(Uri.parse(url));
+        mVideoView.start();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class MoviePlayActivity extends AppCompatActivity {
         IjkMediaPlayer.native_profileEnd();
     }
 
-    //全屏
+    //横竖屏检测切换
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -126,6 +126,7 @@ public class MoviePlayActivity extends AppCompatActivity {
         setScreenRate(currentSize);
     }
 
+    //初始化屏幕配置信息
     private void initScreenInfo() {
         WindowManager wm = this.getWindowManager();
         screenWidth = wm.getDefaultDisplay().getWidth();

@@ -7,7 +7,6 @@ import com.zs.douban.view.base.IView;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -17,10 +16,10 @@ import rx.schedulers.Schedulers;
  *
  */
 
-public abstract class BasePresenter<T,P> {
-    protected IView<T> mIView;
-    protected static DoubanApi sApi;
-    protected BasePresenter() {
+public abstract class BasePresenter<T,P> implements IPresenter<T,P>{
+     IView<T> mIView;
+     static DoubanApi sApi;
+     BasePresenter() {
         //初始化retrofit
         if(sApi==null) {
             Retrofit retrofit = new Retrofit.Builder()
@@ -32,11 +31,7 @@ public abstract class BasePresenter<T,P> {
         }
 
     }
-
-    /**
-     * 获取每个页面对应的Observable
-     */
-    public abstract Observable<T> getObservable(P param);
+    @Override
     public void getData(P param){
         getObservable(param)
                 .subscribeOn(Schedulers.io())
@@ -63,16 +58,13 @@ public abstract class BasePresenter<T,P> {
                     }
                 });
     }
-    protected  abstract void success(T model);
-    protected  abstract void failed(String msg);
+    @Override
     public void initData(){
         getData(initParam());
     }
+    @Override
     public void getMoreData(){
         getData(moreParam());
     }
 
-    protected abstract P moreParam();
-
-    protected abstract P initParam();
 }

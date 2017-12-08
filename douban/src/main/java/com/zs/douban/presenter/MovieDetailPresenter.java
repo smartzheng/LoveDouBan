@@ -23,22 +23,22 @@ public class MovieDetailPresenter extends BasePresenter<MovieDetailBean,Integer>
 
 
     @Override
-    protected void success(MovieDetailBean model) {
+    public void success(MovieDetailBean model) {
         mIView.onSuccess(model);
     }
 
     @Override
-    protected void failed(String msg) {
+    public void failed(String msg) {
 
     }
 
     @Override
-    protected Integer moreParam() {
+    public Integer moreParam() {
         return null;
     }
 
     @Override
-    protected Integer initParam() {
+    public Integer initParam() {
         return mId;
     }
 }

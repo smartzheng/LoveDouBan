@@ -2,6 +2,8 @@ package com.zs.douban.app;
 
 import android.app.Application;
 
+import cn.bmob.v3.Bmob;
+
 /**
  * Created by smartzheng on 2017/4/1.
  *
@@ -14,7 +16,7 @@ public class MyApp extends Application {
         //提供以下两种方式进行初始化操作：
 
         //第一：默认初始化
-        //Bmob.initialize(this, "e8f177acd86e0fde391b2af19243fc1b");
+        Bmob.initialize(this, "e8f177acd86e0fde391b2af19243fc1b");
         // 注:自v3.5.2开始，数据sdk内部缝合了统计sdk，开发者无需额外集成，传渠道参数即可，不传默认没开启数据统计功能
         //Bmob.initialize(this, "Your Application ID","bmob");
 

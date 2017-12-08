@@ -27,24 +27,24 @@ public class ReadPresenter extends BasePresenter<ReadBean,Map<String,Object>> {
 
 
     @Override
-    protected void success(ReadBean model) {
+    public void success(ReadBean model) {
         mIView.onSuccess(model);
     }
 
     @Override
-    protected void failed(String msg) {
+    public void failed(String msg) {
 
     }
 
     @Override
-    protected Map<String, Object> moreParam() {
+    public Map<String, Object> moreParam() {
         mStart+=20;
         param.put("start", mStart);
         return param;
     }
 
     @Override
-    protected Map<String, Object> initParam() {
+    public Map<String, Object> initParam() {
         mStart = 10;
         param.put("start", mStart);
         param.put("count", 20);
