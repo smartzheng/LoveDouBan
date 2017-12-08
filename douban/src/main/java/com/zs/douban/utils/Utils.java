@@ -3,9 +3,14 @@ package com.zs.douban.utils;
 import android.text.Html;
 import android.text.Spanned;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.zs.douban.model.bean.CastsBean;
 import com.zs.douban.model.bean.DirectorsBean;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,5 +58,17 @@ public class Utils {
         String content = s.substring(s.indexOf("："), s.length());
         return Html.fromHtml("<b><tt>" + title + "</b></tt>" + content);
     }
+    public static <T> ArrayList<T> jsonToArrayList(String json, Class<T> clazz)
+    {
+        Type type = new TypeToken<ArrayList<JsonObject>>()
+        {}.getType();
+        ArrayList<JsonObject> jsonObjects = new Gson().fromJson(json, type);
 
+        ArrayList<T> arrayList = new ArrayList<>();
+        for (JsonObject jsonObject : jsonObjects)
+        {
+            arrayList.add(new Gson().fromJson(jsonObject, clazz));
+        }
+        return arrayList;
+    }
 }
