@@ -64,18 +64,18 @@ dependencies {
     compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.4'
     // ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
-    compile project(':ijkplayer-java')
-    compile project(':ijkplayer-exo')
+//    compile project(':ijkplayer-java')
+//    compile project(':ijkplayer-exo')
 
 //    all32Compile project(':ijkplayer-armv5')
 //    all32Compile project(':ijkplayer-armv7a')
 //    all32Compile project(':ijkplayer-x86')
 
-    compile project(':ijkplayer-armv5')
-    compile project(':ijkplayer-armv7a')
-    compile project(':ijkplayer-arm64')
-    compile project(':ijkplayer-x86')
-    compile project(':ijkplayer-x86_64')
+//    compile project(':ijkplayer-armv5')
+//    compile project(':ijkplayer-armv7a')
+//    compile project(':ijkplayer-arm64')
+//    compile project(':ijkplayer-x86')
+//    compile project(':ijkplayer-x86_64')
 
 
     //以下SDK开发者请根据需要自行选择
