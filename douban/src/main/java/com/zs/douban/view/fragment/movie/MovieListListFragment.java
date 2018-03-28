@@ -24,6 +24,7 @@ import butterknife.InjectView;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
 public class MovieListListFragment extends BaseListFragment<MovieListBean> implements BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
@@ -31,7 +32,6 @@ public class MovieListListFragment extends BaseListFragment<MovieListBean> imple
     MovieListPresenter mPresenter;
     @InjectView(R.id.rv_movie)
     RecyclerView mRecyclerView;
-    private int total = 0;
     private int currentPage;
 
     @Override

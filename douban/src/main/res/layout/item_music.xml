@@ -2,8 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/lightgrey"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingLeft="20px"
     android:paddingRight="20px"
     android:paddingBottom="10px"
@@ -17,7 +16,7 @@
         app:contentPadding="20px"
         app:cardMaxElevation="6px"
         app:cardBackgroundColor="@color/white"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <RelativeLayout

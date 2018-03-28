@@ -64,7 +64,7 @@ public abstract class BaseListFragment<T> extends BaseFragment<T> implements IVi
 
     protected void finishLoad() {
         SwipeRefreshHelper.controlRefresh(mSrlRoot, false);
-        if (mAdapter.isLoading())
+        if (mAdapter != null && mAdapter.isLoading())
             mAdapter.loadMoreComplete();
     }
 }

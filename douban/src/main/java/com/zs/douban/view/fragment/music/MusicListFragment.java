@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
 import com.zs.douban.R;
 import com.zs.douban.adapter.MusicAdapter;
 import com.zs.douban.model.bean.BombMusic;
+import com.zs.douban.utils.SwipeRefreshHelper;
 import com.zs.douban.utils.Utils;
 import com.zs.douban.view.base.BaseListFragment;
 
@@ -28,11 +28,13 @@ import cn.bmob.v3.listener.QueryListener;
 
 /**
  * Created by smartzheng on 2017/4/3.
+ *
  */
 
-public class MusicListFragment extends BaseListFragment {
+public class MusicListFragment extends BaseListFragment<List<BombMusic>>{
     @InjectView(R.id.rv_music)
     RecyclerView mRvMusic;
+    private MusicAdapter mMusicAdapter;
 
     @Nullable
     @Override
@@ -44,7 +46,7 @@ public class MusicListFragment extends BaseListFragment {
 
     @Override
     protected int attachLayoutRes() {
-        return 0;
+        return R.layout.fragment_music;
     }
 
     @Override
@@ -54,7 +56,8 @@ public class MusicListFragment extends BaseListFragment {
 
     @Override
     protected void initViews() {
-
+        mRvMusic.setLayoutManager(new LinearLayoutManager(MusicListFragment.this.getContext()));
+        mMusicAdapter = new MusicAdapter(getContext());
     }
 
     @Override
@@ -64,7 +67,9 @@ public class MusicListFragment extends BaseListFragment {
 
     @Override
     public void initData() {
-        /**
+        SwipeRefreshHelper.controlRefresh(mSrlRoot, true);
+
+        /*
          * 查询数据
          */
         BmobQuery query = new BmobQuery("File");
@@ -77,12 +82,7 @@ public class MusicListFragment extends BaseListFragment {
             public void done(JSONArray ary, BmobException e) {
                 if (e == null) {
                     Log.i("bmob", "查询成功：" + ary.toString());
-                    Gson gson = new Gson();
-                    List<BombMusic> bombMusics = Utils.jsonToArrayList(ary.toString(), BombMusic.class);
-                    MusicAdapter musicAdapter= new MusicAdapter();
-                    mRvMusic.setLayoutManager(new LinearLayoutManager(MusicListFragment.this.getContext()));
-                    musicAdapter.setNewData(bombMusics);
-                    mRvMusic.setAdapter(musicAdapter);
+                    onSuccess(Utils.jsonToArrayList(ary.toString(), BombMusic.class));
                 } else {
                     Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
                 }
@@ -93,12 +93,13 @@ public class MusicListFragment extends BaseListFragment {
 
     @Override
     public void onFailed() {
-
+        finishLoad();
     }
 
     @Override
-    public void onSuccess(Object data) {
-
+    public void onSuccess(List<BombMusic> bombMusics) {
+        mMusicAdapter.setNewData(bombMusics);
+        finishLoad();
     }
 
     @Override
