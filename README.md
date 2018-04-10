@@ -5,4 +5,4 @@
 
   
   
-![image](https://github.com/smartzheng/ILoveDouBan/blob/master/douban/images/Screenshot1.gif)
+![image](https://github.com/smartzheng/ILoveDouBan/blob/master/douban/images/douban.gif)
